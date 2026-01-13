@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# AssetManager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AssetManager adalah aplikasi manajemen inventaris aset berbasis mobile yang dirancang untuk memudahkan pelacakan, pemantauan kondisi, dan manajemen stok barang dalam organisasi. Aplikasi ini dibangun menggunakan teknologi web modern dan dibungkus dengan Capacitor untuk penggunaan native di Android.
 
-Currently, two official plugins are available:
+## Fitur Utama
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Manajemen User & Role**: Dukungan untuk pengguna biasa dan Admin dengan hak akses berbeda.
+- **Dashboard Interaktif**: Visualisasi data aset secara real-time (Total Aset, Aset Tersedia, Aset Rusak).
+- **Statistik & Laporan**: Grafik kondisi aset (Pie Chart & Bar Chart) untuk pemantauan mudah.
+- **Scanner QR Code**: Fitur scan QR Code untuk identifikasi aset secara cepat.
+- **Manajemen Stok**: Pelacakan status barang (Tersedia, Digunakan, Rusak).
+- **Autentikasi Aman**: Sistem Login dan Register yang terintegrasi.
 
-## React Compiler
+## Teknologi
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Project ini dibangun menggunakan stack berikut:
 
-## Expanding the ESLint configuration
+- **Frontend**: React, TypeScript, Vite
+- **Styling**: Tailwind CSS, Lucide React
+- **Mobile Runtime**: Capacitor (Android)
+- **State/Data**: Firebase (Firestore/Auth)
+- **Charts**: Recharts
+- **Animation**: Framer Motion
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Demo Aplikasi
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Berikut adalah tampilan antarmuka dari aplikasi AssetManager:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Login Screen | Register Screen |
+|:---:|:---:|
+| <img src="assets/screenshots/login_screen.jpg" alt="Login" width="250"/> | <img src="assets/screenshots/register_screen.jpg" alt="Register" width="250"/> |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Admin Dashboard | Statistik & Monitoring |
+|:---:|:---:|
+| <img src="assets/screenshots/admin_dashboard.jpg" alt="Dashboard" width="250"/> | <img src="assets/screenshots/stats_view.jpg" alt="Stats" width="250"/> |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Cara Menjalankan
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Jalankan Development Server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build untuk Android**
+   ```bash
+   npm run build
+   npx cap sync
+   npx cap open android
+   ```
