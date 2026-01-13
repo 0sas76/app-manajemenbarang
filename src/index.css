@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0f172a;
+    background-color: #fcfaf8;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #f7f2ed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight text-neutral-main;
+  }
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  #root {
+    max-width: 440px;
+    height: 90vh;
+    border-radius: 2.5rem;
+    border: 1px solid #ede4db;
+    box-shadow:
+      0 25px 50px -12px rgba(13, 92, 99, 0.05),
+      0 0 1px 0 rgba(0, 0, 0, 0.05);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-500 text-white rounded-2xl font-bold transition-all duration-300 active:scale-95 shadow-lg shadow-brand-500/10 hover:bg-brand-600 hover:translate-y-[-1px];
+  }
+
+  .btn-secondary {
+    @apply flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-brand-500 border border-brand-200 rounded-2xl font-bold transition-all duration-300 active:scale-95 hover:bg-brand-50;
+  }
+
+  .input-modern {
+    @apply w-full h-14 px-5 bg-surface-50 border border-surface-200 rounded-2xl text-neutral-main font-semibold placeholder:text-neutral-soft/50 transition-all duration-300 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/5;
+  }
+
+  .card-premium {
+    @apply bg-white p-6 rounded-[2rem] border border-surface-200 shadow-sm transition-all duration-300 hover:shadow-md hover:border-surface-300;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Barcode Scanner Styles - Required for native MLKit scanner */
+  body.barcode-scanner-active {
+    visibility: hidden;
+    background: transparent !important;
+  }
+
+  body.barcode-scanner-active .barcode-scanner-modal {
+    visibility: visible;
+    background: transparent !important;
+  }
+
+  body.barcode-scanner-active #root {
+    background: transparent !important;
+  }
+}
